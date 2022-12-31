@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Context } from "../contexts/Context";
 import Card from "./Card";
 import GuestItem from "./GuestItem";
 
 const GuestList = (props) => {
+	const { data } = useContext(Context);
 	return (
 		<Wrapper>
 			<Card className="list">
-				<GuestItem imie={"Oskar"} nazwisko={"sgiga"} />
-				<GuestItem imie={"Giga"} nazwisko={"giga"} />
-				<GuestItem imie={"Giga"} nazwisko={"giga"} />
-				<GuestItem imie={"Giga"} nazwisko={"giga"} />
+				{data &&
+					data.map((guest) => {
+						return (
+							<GuestItem
+								key={guest.sys.id}
+								imie={guest.fields.name}
+								nazwisko={guest.fields.surname}
+							/>
+						);
+					})}
+				;
 			</Card>
 		</Wrapper>
 	);
