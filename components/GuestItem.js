@@ -1,7 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { createClient } from "contentful-management";
 import Card from "./Card";
 
+const client = createClient({
+	accessToken: "CFPAT-lwmJRIOUzeELJdaJi3ytdh72vI1WTKSzOAMRlchnWkI",
+});
+async function handleDelete(entryId) {
+	try {
+		const environment = await client
+			.getSpace("mg14tohen3xp")
+			.then((space) => space.getEnvironment("master"));
+		const entry = await environment.getEntry(entryId);
+		await entry.unpublish();
+		await entry.delete();
+	} catch (error) {
+		console.error(error);
+	}
+}
 const GuestItem = (props) => {
 	return (
 		<Wrapper>
@@ -9,7 +25,9 @@ const GuestItem = (props) => {
 				<div className="guest-item__description">
 					<h2 className="guest-item-h2">{props.imie}</h2>
 					<h2 className="guest-item-h2">{props.nazwisko}</h2>
-					<button className="button-4">Usuń Gościa</button>
+					<button className="button-4" onClick={() => handleDelete(props.id)}>
+						Usuń Gościa
+					</button>
 				</div>
 			</Card>
 		</Wrapper>

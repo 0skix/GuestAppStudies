@@ -16,7 +16,7 @@ export default function Home(props) {
 	}, []);
 	return (
 		<>
-			<h1> </h1>
+			{console.log(props.guests)}
 			<NewGuest />
 			<GuestList />
 		</>
@@ -29,5 +29,6 @@ export const getStaticProps = async () => {
 		props: {
 			guests: res.items,
 		},
+		revalidate: 1, // In seconds
 	};
 };

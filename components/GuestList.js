@@ -9,11 +9,13 @@ const GuestList = (props) => {
 	return (
 		<Wrapper>
 			<Card className="list">
+				{console.log(data)}
 				{data &&
 					data.map((guest) => {
 						return (
 							<GuestItem
 								key={guest.sys.id}
+								id={guest.sys.id}
 								imie={guest.fields.name}
 								nazwisko={guest.fields.surname}
 							/>
