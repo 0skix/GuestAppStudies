@@ -1,0 +1,23 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.1",
+    "babel-plugin-styled-components": "^1.8.0",
+    "contentful": "^9.2.14",
+    "contentful-management": "^10.26.0",
+    "firebase": "^9.15.0",
+    "next": "^13.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-firebase-hooks": "^5.1.1",
+    "styled-components": "^5.3.6"
+  }
+}
